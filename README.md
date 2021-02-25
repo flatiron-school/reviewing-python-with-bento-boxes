@@ -47,7 +47,7 @@ Now, if we wanted to change our protein to ginger chicken, how would we do that?
 
 ```python
 # Code here to change protein
-
+protein = "ginger chicken"
 ```
 
 And changing the amount of protein to 3.5?
@@ -55,7 +55,7 @@ And changing the amount of protein to 3.5?
 
 ```python
 # Code here to change oz_of_protein
-
+oz_of_protein = 3.5
 ```
 
 We can reassign variable values easily.
@@ -69,7 +69,7 @@ Update your side order to match your preferences - add whatever you want!
 
 ```python
 # Code here to change sides 
-
+side1, side2, side3 = "california roll", "crab rangoon", "fortune cookie"
 ```
 
 Then use `print()` to confirm the variables changed.
@@ -77,8 +77,15 @@ Then use `print()` to confirm the variables changed.
 
 ```python
 # Code here to confirm your changes
-
+side1, side2, side3
 ```
+
+
+
+
+    ('california roll', 'crab rangoon', 'fortune cookie')
+
+
 
 ### Variable Types
 
@@ -90,13 +97,27 @@ Each variable in our bento box has a `type`.
 type(side1)
 ```
 
+
+
+
+    str
+
+
+
 Run `type()` on some of the remaining variables to explore the type options.
 
 
 ```python
 # Code here to check other variable types
-
+type(great_bento)
 ```
+
+
+
+
+    bool
+
+
 
 Each data type in Python has a set behavior in a lot of ways, and knowing what type your variable is can help you know exactly what you can do with it!
 
@@ -145,30 +166,40 @@ else:
     print("I will like this bento box!")
 ```
 
+    no carbs, please!
+
+
 Above, if the main isn't rice and if the amount of protein is less than 2.5, I think I'll like the box!
 
 Update the above code example, but rather than `print`, instead set `great_bento` equal to `True` or `False` depending on the values of the bento box ingredients - feel free to customize the checks based on your own personal preferences!
 
 
 ```python
-# Update the code below, based on your own preferences
+# Make the relevant changes below, based on your own preferences
 if (main == 'rice'):
-    print("no carbs, please!")
-elif(ozofprotein >= 2.5):
-    print("too much!")
+    great_bento = False
+elif(oz_of_protein >= 2.5):
+    great_bento = False
 else:
-    print("I will like this bento box!")
+    great_bento = True
 ```
 
 
 ```python
 # Is great_bento True or False right now?
-
+great_bento
 ```
+
+
+
+
+    False
+
+
 
 ## Using Lists: indexing, appending, joining
 
-![dog-to-do-list gif from giphy](https://media.giphy.com/media/xTiTnuhyBF54B852nK/giphy.gif)
+![dog-to-do-list](https://media.giphy.com/media/xTiTnuhyBF54B852nK/giphy.gif)
 
 Writing out all those ingredients individually is a pain, let's put them in a list!
 
@@ -177,7 +208,7 @@ Writing out all those ingredients individually is a pain, let's put them in a li
 
 ```python
 # Replace None with relevant code
-bento_ingredients = None
+bento_ingredients = ["rice", "salmon", 'seaweed', 'onigiri', 'turnip pickle']
 ```
 
 Lists are ordered, meaning you can access the index number for an element:
@@ -187,6 +218,13 @@ Lists are ordered, meaning you can access the index number for an element:
 # Run this cell without changes
 bento_ingredients[4]
 ```
+
+
+
+
+    'turnip pickle'
+
+
 
 Or you can grab ranges/slices of a list:
 
@@ -199,12 +237,19 @@ Or you can grab ranges/slices of a list:
 bento_ingredients[2:5]
 ```
 
+
+
+
+    ['seaweed', 'onigiri', 'turnip pickle']
+
+
+
 Add items to a list with `.append()` - add something else you like to your order!
 
 
 ```python
 # Code here to add to your list
-
+bento_ingredients.append('kimchi')
 ```
 
 If you don't want to keep that last item, you can use `.pop()` to remove it.
@@ -212,14 +257,28 @@ If you don't want to keep that last item, you can use `.pop()` to remove it.
 
 ```python
 # Code here to test that out
-
+bento_ingredients.pop()
 ```
+
+
+
+
+    'kimchi'
+
+
 
 
 ```python
 # Now check what your list looks like - is that last item still there?
-
+bento_ingredients
 ```
+
+
+
+
+    ['rice', 'salmon', 'seaweed', 'onigiri', 'turnip pickle']
+
+
 
 Now, let's put our bento box in a readable format using `join`:
 
@@ -230,6 +289,9 @@ print("I'd like my bento box to contain: " +
       ", ".join(bento_ingredients[:-1]) + ", and " + bento_ingredients[-1])
 ```
 
+    I'd like my bento box to contain: rice, salmon, seaweed, onigiri, and turnip pickle
+
+
 **New thing!** F-strings allow you to easily format strings to add variables or elements from an iterable (like a list). You can also use `.format()` in a similar way.
 
 
@@ -238,16 +300,19 @@ print("I'd like my bento box to contain: " +
 print(f"My bento box will include {bento_ingredients[0]} and {bento_ingredients[1]}.")
 ```
 
+    My bento box will include rice and salmon.
+
+
 
 ```python
 # The above cell is the same as:
 print("My bento box will include {} and {}.".format(bento_ingredients[0], bento_ingredients[1]))
 ```
 
+    My bento box will include rice and salmon.
+
+
 **Think about it:** How is the f-string/format working differently from the join we did before?
-
-- 
-
 
 ## Using Dictionaries: Identifying, Creating, Navigating
 
@@ -275,48 +340,100 @@ print(bento_dict)
 print(type(bento_dict))
 ```
 
+    {'ingredient1': 'rice', 'ingredient2': 'tempura', 'ingredient3': 'miso soup'}
+    <class 'dict'>
+
+
 
 ```python
 # Code here to create a dictionary from your bento ingredients
 # Change things up to whatever you like!
-bento_dict = None
+bento_dict = {
+    "main" : "rice",
+    "protein" : "salmon",
+    'side1' : 'seaweed',
+    'side2' : 'onigiri',
+    'side3' : 'turnip pickle'
+}
 ```
 
 
 ```python
 # Code here to check your work - check type, and print your dictionary
+print(type(bento_dict))
 
-
-
+print(bento_dict)
 ```
+
+    <class 'dict'>
+    {'main': 'rice', 'protein': 'salmon', 'side1': 'seaweed', 'side2': 'onigiri', 'side3': 'turnip pickle'}
+
 
 You use the key of the dictionary to access its value, for example `bento_box['main']` 
 
 
 ```python
 # Practice accessing elements in your bento box
-
+bento_dict['main']
 ```
+
+
+
+
+    'rice'
+
+
 
 Let's say we want to combine EVERYONE'S bento dictionaries - we can nest those dictonaries inside of a list!
 
-Let's get a few different bento box orders into a group order - use Slack to send your dictionaries to each other (you'll want to send everyone the dictionary output, not the code you wrote if you used zip to create your dictionary). 
-
-**Tip:** make sure each of the dictionaries are structured the same, with the same key names for what is in the bento boxes (as in, make sure you each have a main, a protein, and the same number of sides) - for this exercise, it'll make your life easier later on! 
+Let's get a few different bento box orders into a group order - use Slack to send your dictionaries to each other (you'll want to send everyone the dictionary output, not the code you wrote if you used zip to create your dictionary). Tip: make sure each of the dictionaries are structured the same, with the same key names for what is in the bento boxes (as in, make sure you each have a main, a protein, and the same number of sides) - it'll make your life easier later on! 
 
 Grab at least two other orders and create a list of different dictionaries:
 
 
 ```python
 # Code here to combine your group order
-
+group_order = [
+    bento_dict,
+    {"main": "cheeseburger",
+     "protein": "meat",
+     "side1": "french fries",
+     "side2": "pickle",
+     "side3": "milkshake"},
+    {"main": "salad",
+     "protein": "tempura shrimp",
+     "side1": "radishes",
+     "side2": "tuna roll",
+     "side3": "wasabi"}
+]
 ```
 
 
 ```python
 # Code here to check your work
-
+group_order
 ```
+
+
+
+
+    [{'main': 'rice',
+      'protein': 'salmon',
+      'side1': 'seaweed',
+      'side2': 'onigiri',
+      'side3': 'turnip pickle'},
+     {'main': 'cheeseburger',
+      'protein': 'meat',
+      'side1': 'french fries',
+      'side2': 'pickle',
+      'side3': 'milkshake'},
+     {'main': 'salad',
+      'protein': 'tempura shrimp',
+      'side1': 'radishes',
+      'side2': 'tuna roll',
+      'side3': 'wasabi'}]
+
+
 
 But what if we also want to keep track of whose order is whose? Instead of doing a list of dictionaries, we can do a nested dictionary of dictionaries! 
 
@@ -327,28 +444,60 @@ Create a dictionary of dictionaries, where the key is the name of the person ord
 
 ```python
 # Code here to create your nested dictionaries
-
+group_dict = {
+    "Lindsey" : bento_dict,
+    "James" : group_order[1],
+    "Hannah" : group_order[2]
+}
 ```
 
 
 ```python
 # Check your work
-
+group_dict
 ```
+
+
+
+
+    {'Lindsey': {'main': 'rice',
+      'protein': 'salmon',
+      'side1': 'seaweed',
+      'side2': 'onigiri',
+      'side3': 'turnip pickle'},
+     'James': {'main': 'cheeseburger',
+      'protein': 'meat',
+      'side1': 'french fries',
+      'side2': 'pickle',
+      'side3': 'milkshake'},
+     'Hannah': {'main': 'salad',
+      'protein': 'tempura shrimp',
+      'side1': 'radishes',
+      'side2': 'tuna roll',
+      'side3': 'wasabi'}}
+
+
 
 Now, if we wanted a list of people who ordered bento boxes, we could grab a list of those names by using `.keys()`
 
 
 ```python
 # Code here to grab a list of who you have orders for
-
+group = list(group_dict.keys())
 ```
 
 
 ```python
 # Check your work
-
+type(group)
 ```
+
+
+
+
+    list
+
+
 
 ## For loops
 
@@ -363,8 +512,14 @@ Remember! You have already defined a list of everyone's names from above! You ca
 
 ```python
 # Code here to write a for loop that prints each main
-
+for order in group_dict.values():
+    print(order['main'])
 ```
+
+    rice
+    cheeseburger
+    salad
+
 
 ### Bringing everything together!
 
@@ -376,16 +531,39 @@ Now, using the names from the nested dictionaries, can we create a list of tuple
 
 
 ```python
-# Code here to create a list of tuples for each person and their protein
+group_dict.keys()
+```
 
+
+
+
+    dict_keys(['Lindsey', 'James', 'Hannah'])
+
+
+
+
+```python
+# Code here to create a list of tuples for each person and their protein
+tuple_list = []
+
+for person in group_dict.keys():
+    protein = group_dict[person]['protein']
+    tuple_list.append((person, protein))
 ```
 
 
 ```python
 # Code here to check your work
 # Tuple list will look like [('person', 'protein'), ...]
-
+tuple_list
 ```
+
+
+
+
+    [('Lindsey', 'salmon'), ('James', 'meat'), ('Hannah', 'tempura shrimp')]
+
+
 
 Now, print each of your orders as readable sentences. 
 
@@ -394,12 +572,20 @@ You can use `.join()` or f-strings or `.format()` - no wrong way to do it! You m
 
 ```python
 # Code here to print each order as a human-readable sentence
-
+for name in group_dict.keys():
+    components = list(group_dict[name].values())
+    print(f"{name} would like a bento box with " +
+          ", ".join(components[:-1]) + ", and " + components[-1])
 ```
+
+    Lindsey would like a bento box with rice, salmon, seaweed, onigiri, and turnip pickle
+    James would like a bento box with cheeseburger, meat, french fries, pickle, and milkshake
+    Hannah would like a bento box with salad, tempura shrimp, radishes, tuna roll, and wasabi
+
 
 ### Reflection:
 
 What's a situation where you could use lists and loops to automate a process?
 
-- 
+- So many possibilities!
 
